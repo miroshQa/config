@@ -19,13 +19,43 @@ config.keys = {
   {
     key = 'q',
     mods = 'ALT',
-    action = wezterm.action.CloseCurrentTab { confirm = false },
+    action = wezterm.action.CloseCurrentPane { confirm = false },
   },
-  { key = 'h', mods = 'ALT', action = act.ActivateTabRelativeNoWrap(-1) },
-  { key = 'l', mods = 'ALT', action = act.ActivateTabRelativeNoWrap(1) },
-  { key = 'H', mods = 'ALT', action = act.MoveTabRelative(-1) },
-  { key = 'L', mods = 'ALT', action = act.MoveTabRelative(1)},
-  { key = "Enter", mods = "CTRL", action = act.ToggleFullScreen}
+  { key = 'h',     mods = 'ALT',  action = act.ActivateTabRelativeNoWrap(-1) },
+  { key = 'l',     mods = 'ALT',  action = act.ActivateTabRelativeNoWrap(1) },
+  { key = 'H',     mods = 'ALT',  action = act.MoveTabRelative(-1) },
+  { key = 'L',     mods = 'ALT',  action = act.MoveTabRelative(1) },
+  { key = "Enter", mods = "CTRL", action = act.ToggleFullScreen },
+  {
+    key = 'v',
+    mods = 'ALT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'x',
+    mods = 'ALT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = "s",
+    mods = "ALT",
+    action = act.ActivatePaneDirection "Left",
+  },
+  {
+    key = "f",
+    mods = "ALT",
+    action = act.ActivatePaneDirection "Right",
+  },
+  {
+    key = "e",
+    mods = "ALT",
+    action = act.ActivatePaneDirection "Up",
+  },
+  {
+    key = "d",
+    mods = "ALT",
+    action = act.ActivatePaneDirection "Down",
+  },
 }
 
 config.hide_tab_bar_if_only_one_tab = true
