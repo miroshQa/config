@@ -60,6 +60,7 @@ function install_if_missing() {
 function main() {
   ## Main block
   echo "Starting to install essential programms and utilites..."
+  prepare_before_installation
 
   declare -A commands=(
   [nvim]="install_neovim"
