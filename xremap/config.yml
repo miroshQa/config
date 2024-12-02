@@ -1,0 +1,16 @@
+modmap:
+  - name: GLOBAL
+    remap:
+      Esc: CapsLock
+      CapsLock: Esc
+      Alt_L: Ctrl_R
+keymap:
+  - name: Doesntmatter
+    remap:
+      C-h: left
+      C-l: right
+      C-k: up
+      C-j: down
+      C-b: C-left
+      C-e: C-right
+      KEY_KPENTER: KEY_ENTER
