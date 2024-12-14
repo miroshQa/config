@@ -12,7 +12,7 @@ config.audible_bell = "Disabled"
 config.window_background_opacity = 1
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.use_fancy_tab_bar = true
-config.max_fps = 120
+config.max_fps = 240
 config.initial_rows = 36
 config.initial_cols = 140
 config.adjust_window_size_when_changing_font_size = false
@@ -25,44 +25,6 @@ local function close_copy_mode()
     act.CopyMode 'MoveToScrollbackBottom'
 	})
 end
-
-
-wezterm.on('trigger-vim-with-scrollback', function(window, pane)
-  -- Retrieve the text from the pane
-  local text = pane:get_lines_as_text(pane:get_dimensions().scrollback_rows)
-
-  -- Create a temporary file to pass to vim
-  local name = os.tmpname()
-  local f = io.open(name, 'w+')
-  f:write(text)
-  f:flush()
-  f:close()
-
-  -- Open a new window running vim and tell it to open the file
-  window:perform_action(
-    act.SpawnCommandInNewWindow {
-      args = {
-        "/opt/nvim-linux64/bin/nvim",
-        "-c",
-        "setlocal nonumber nolist showtabline=0 foldcolumn=0|Man!'",
-        "-c",
-        "autocmd VimEnter * normal G",
-        name,
-      },
-    },
-    pane
-  )
-
-  -- Wait "enough" time for vim to read the file before we remove it.
-  -- The window creation and process spawn are asynchronous wrt. running
-  -- this script and are not awaitable, so we just pick a number.
-  --
-  -- Note: We don't strictly need to remove this file, but it is nice
-  -- to avoid cluttering up the temporary directory.
-  wezterm.sleep_ms(1000)
-  os.remove(name)
-end)
-
 
 config.keys = {
 
@@ -81,7 +43,6 @@ config.keys = {
 	{ key = "d", mods = "ALT", action = act.ActivatePaneDirection("Down") },
 	{ key = "a", mods = "ALT", action = wezterm.action.ActivateCopyMode },
 	{ mods = "ALT", key = "r", action = wezterm.action.RotatePanes("Clockwise") },
-  { key = 'o', mods = 'ALT', action = act.EmitEvent 'trigger-vim-with-scrollback', },
 }
 
 config.key_tables = {
