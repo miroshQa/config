@@ -17,6 +17,13 @@ config.initial_rows = 36
 config.initial_cols = 140
 config.adjust_window_size_when_changing_font_size = false
 
+config.window_padding = {
+  left = '1cell',
+  right = '1cell',
+  top = '0.5cell',
+  bottom = '0cell',
+}
+
 local function close_copy_mode()
 	return act.Multiple({
 		act.CopyMode("ClearSelectionMode"),
