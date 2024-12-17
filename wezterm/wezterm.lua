@@ -98,8 +98,9 @@ config.key_tables = {
     { key = 'T', mods = 'SHIFT', action = act.CopyMode { JumpBackward = { prev_char = true } }, },
 	},
 	search_mode = {
-		{ key = "Escape", mods = "NONE", action = wezterm.action({ CopyMode = "Close" }) },
+		{ key = "Escape", mods = "NONE", action = act.Multiple { "ActivateCopyMode" } },
 		{ key = "Enter", mods = "NONE", action = "ActivateCopyMode" },
+    { key = 'u', mods = 'CTRL', action = act.CopyMode 'ClearPattern' },
 	},
 }
 
