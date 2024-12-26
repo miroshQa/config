@@ -44,11 +44,13 @@ config.keys = {
 	{ key = "Enter", mods = "CTRL", action = act.ToggleFullScreen },
 	{ key = "v", mods = "ALT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "x", mods = "ALT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "s", mods = "ALT", action = act.ActivatePaneDirection("Left") },
-	{ key = "f", mods = "ALT", action = act.ActivatePaneDirection("Right") },
-	{ key = "e", mods = "ALT", action = act.ActivatePaneDirection("Up") },
-	{ key = "d", mods = "ALT", action = act.ActivatePaneDirection("Down") },
-	{ key = "a", mods = "ALT", action = wezterm.action.ActivateCopyMode },
+
+	{ key = "LeftArrow", mods = "SHIFT", action = act.ActivatePaneDirection("Left") },
+	{ key = "RightArrow", mods = "SHIFT", action = act.ActivatePaneDirection("Right") },
+	{ key = "UpArrow", mods = "SHIFT", action = act.ActivatePaneDirection("Up") },
+	{ key = "DownArrow", mods = "SHIFT", action = act.ActivatePaneDirection("Down") },
+
+	{ key = "Space", mods = "CTRL|SHIFT", action = wezterm.action.ActivateCopyMode },
 	{ mods = "ALT", key = "r", action = wezterm.action.RotatePanes("Clockwise") },
 }
 
